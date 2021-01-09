@@ -88,10 +88,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);C:\VulkanSDK\1.2.162.0\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\VulkanSDK\1.2.162.0\Lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -102,12 +105,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);C:\VulkanSDK\1.2.162.0\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\VulkanSDK\1.2.162.0\Lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -116,10 +122,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir);C:\VulkanSDK\1.2.162.0\Include;C:\Users\victo\source\repos\Libraries\glm-0.9.9.8;C:\Users\victo\source\repos\Libraries\glfw-3.3.2.bin.WIN64\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\VulkanSDK\1.2.162.0\Lib;C:\Users\victo\source\repos\Libraries\glfw-3.3.2.bin.WIN64\lib-vc2019</AdditionalLibraryDirectories>
+      <AdditionalDependencies>vulkan-1.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -130,16 +140,90 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir);C:\VulkanSDK\1.2.162.0\Include;C:\Users\victo\source\repos\Libraries\glm-0.9.9.8;C:\Users\victo\source\repos\Libraries\glfw-3.3.2.bin.WIN64\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\VulkanSDK\1.2.162.0\Lib;C:\Users\victo\source\repos\Libraries\glfw-3.3.2.bin.WIN64\lib-vc2019</AdditionalLibraryDirectories>
+      <AdditionalDependencies>vulkan-1.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application\Source\Main.cpp" />
+    <ClCompile Include="Engine\Source\GLFWManager.cpp" />
+    <ClCompile Include="Engine\Source\Window.cpp" />
+    <ClCompile Include="Engine\Utilities\Source\Exception.cpp" />
+    <ClCompile Include="Engine\Utilities\Source\PerformanceProfiler.cpp" />
+    <ClCompile Include="Engine\Utilities\Source\Timer.cpp" />
+    <ClCompile Include="Libraries\libpng\png.c" />
+    <ClCompile Include="Libraries\libpng\pngerror.c" />
+    <ClCompile Include="Libraries\libpng\pngget.c" />
+    <ClCompile Include="Libraries\libpng\pngmem.c" />
+    <ClCompile Include="Libraries\libpng\pngpread.c" />
+    <ClCompile Include="Libraries\libpng\pngread.c" />
+    <ClCompile Include="Libraries\libpng\pngrio.c" />
+    <ClCompile Include="Libraries\libpng\pngrtran.c" />
+    <ClCompile Include="Libraries\libpng\pngrutil.c" />
+    <ClCompile Include="Libraries\libpng\pngset.c" />
+    <ClCompile Include="Libraries\libpng\pngtrans.c" />
+    <ClCompile Include="Libraries\libpng\pngwio.c" />
+    <ClCompile Include="Libraries\libpng\pngwrite.c" />
+    <ClCompile Include="Libraries\libpng\pngwtran.c" />
+    <ClCompile Include="Libraries\libpng\pngwutil.c" />
+    <ClCompile Include="Libraries\zlib\adler32.c" />
+    <ClCompile Include="Libraries\zlib\compress.c" />
+    <ClCompile Include="Libraries\zlib\crc32.c" />
+    <ClCompile Include="Libraries\zlib\deflate.c" />
+    <ClCompile Include="Libraries\zlib\gzclose.c" />
+    <ClCompile Include="Libraries\zlib\gzlib.c" />
+    <ClCompile Include="Libraries\zlib\gzread.c" />
+    <ClCompile Include="Libraries\zlib\gzwrite.c" />
+    <ClCompile Include="Libraries\zlib\infback.c" />
+    <ClCompile Include="Libraries\zlib\inffast.c" />
+    <ClCompile Include="Libraries\zlib\inflate.c" />
+    <ClCompile Include="Libraries\zlib\inftrees.c" />
+    <ClCompile Include="Libraries\zlib\trees.c" />
+    <ClCompile Include="Libraries\zlib\uncompr.c" />
+    <ClCompile Include="Libraries\zlib\zutil.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\Include\CommonIncludes.h" />
+    <ClInclude Include="Engine\Include\GLFWManager.h" />
+    <ClInclude Include="Engine\Include\ImageLoader.h" />
+    <ClInclude Include="Engine\Include\Platform.h" />
+    <ClInclude Include="Engine\Include\RaveEngine.h" />
+    <ClInclude Include="Engine\Include\Window.h" />
+    <ClInclude Include="Engine\Utilities\Include\Exception.h" />
+    <ClInclude Include="Engine\Utilities\Include\Flag.h" />
+    <ClInclude Include="Engine\Utilities\Include\PerformanceProfiler.h" />
+    <ClInclude Include="Engine\Utilities\Include\Random.h" />
+    <ClInclude Include="Engine\Utilities\Include\String.h" />
+    <ClInclude Include="Engine\Utilities\Include\SystemInfo.h" />
+    <ClInclude Include="Engine\Utilities\Include\Timer.h" />
+    <ClInclude Include="Engine\Utilities\Include\Vector.h" />
+    <ClInclude Include="Libraries\libpng\png.h" />
+    <ClInclude Include="Libraries\libpng\pngconf.h" />
+    <ClInclude Include="Libraries\libpng\pngdebug.h" />
+    <ClInclude Include="Libraries\libpng\pnginfo.h" />
+    <ClInclude Include="Libraries\libpng\pnglibconf.h" />
+    <ClInclude Include="Libraries\libpng\pngpriv.h" />
+    <ClInclude Include="Libraries\libpng\pngstruct.h" />
+    <ClInclude Include="Libraries\libpng\zlib.h" />
+    <ClInclude Include="Libraries\zlib\crc32.h" />
+    <ClInclude Include="Libraries\zlib\deflate.h" />
+    <ClInclude Include="Libraries\zlib\gzguts.h" />
+    <ClInclude Include="Libraries\zlib\inffast.h" />
+    <ClInclude Include="Libraries\zlib\inffixed.h" />
+    <ClInclude Include="Libraries\zlib\inflate.h" />
+    <ClInclude Include="Libraries\zlib\inftrees.h" />
+    <ClInclude Include="Libraries\zlib\trees.h" />
+    <ClInclude Include="Libraries\zlib\zconf.h" />
+    <ClInclude Include="Libraries\zlib\zlib.h" />
+    <ClInclude Include="Libraries\zlib\zutil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
