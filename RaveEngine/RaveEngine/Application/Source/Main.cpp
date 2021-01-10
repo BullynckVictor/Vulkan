@@ -49,7 +49,7 @@ private:
         createInfo.enabledLayerCount = 0;
 
         if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS)
-            throw std::runtime_error("failed to create instance!");
+            rave_throw_message(L"failed to create instance!");
     }
 
     void initVulkan()
@@ -88,7 +88,7 @@ int rave_main()
     {
         rave::GLFWManager glfwMan;
 
-        rave::Window wnd = rave::Window("ello", 800, 600, "Assets/icon.png");
+        rave::Window wnd = rave::Window("Rave Engine: Vulkan Edition", 800, 600, "Assets/icon.gif");
 
         while (wnd.IsOpen())
         {

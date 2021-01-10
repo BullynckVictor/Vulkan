@@ -123,6 +123,150 @@
     <ClCompile Include="Libraries\zlib\inffast.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jaricom.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jcapimin.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jcapistd.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jcarith.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jccoefct.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jccolor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jcdctmgr.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jchuff.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jcinit.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jcmainct.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jcmarker.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jcmaster.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jcomapi.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jcparam.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jcprepct.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jcsample.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jctrans.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdapimin.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdapistd.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdarith.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdatadst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdatasrc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdcoefct.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdcolor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jddctmgr.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdhuff.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdinput.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdmainct.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdmarker.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdmaster.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdmerge.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdpostct.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdsample.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jdtrans.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jerror.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jfdctflt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jfdctfst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jfdctint.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jidctflt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jidctfst.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jidctint.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jmemmgr.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jmemnobs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jquant1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jquant2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\libjpg\jutils.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Source\ImageLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\cgif\gifdec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Utilities\Include\Exception.h">
@@ -225,6 +369,36 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Utilities\Include\Color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\libjpg\jconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\libjpg\jdct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\libjpg\jerror.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\libjpg\jinclude.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\libjpg\jmemsys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\libjpg\jmorecfg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\libjpg\jpegint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\libjpg\jpeglib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\libjpg\jversion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\cgif\gifdec.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

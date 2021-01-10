@@ -14,10 +14,10 @@ rave::Window::Window(const char* title, const unsigned int width, const unsigned
 	if (iconName)
 	{
 		GLFWimage icon;
-		std::vector<unsigned char> data;
+		std::vector<Color> data;
 		unsigned int w, h;
 		ReadImage(iconName, data, &w, &h);
-		icon.pixels = data.data();
+		icon.pixels = reinterpret_cast<unsigned char*>(data.data());
 		icon.width = (int)w;
 		icon.height = (int)h;
 		glfwSetWindowIcon(pWindow, 1, &icon);
