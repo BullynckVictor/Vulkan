@@ -224,5 +224,8 @@
     <ClInclude Include="Libraries\libpng\zlib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Utilities\Include\Color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

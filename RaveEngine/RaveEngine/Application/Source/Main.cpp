@@ -88,7 +88,7 @@ int rave_main()
     {
         rave::GLFWManager glfwMan;
 
-        rave::Window wnd = rave::Window("ello", 800, 600);
+        rave::Window wnd = rave::Window("ello", 800, 600, "Assets/icon.png");
 
         while (wnd.IsOpen())
         {

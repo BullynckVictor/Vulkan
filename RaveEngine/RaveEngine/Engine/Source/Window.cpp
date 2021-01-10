@@ -1,4 +1,5 @@
 #include "Engine/Include/Window.h"
+#include "Engine/Include/ImageLoader.h"
 
 rave::Window::Window(const char* title, const unsigned int width, const unsigned int height, const char* iconName)
 	:
@@ -10,7 +11,18 @@ rave::Window::Window(const char* title, const unsigned int width, const unsigned
 	pWindow = glfwCreateWindow(width, height, title, nullptr, nullptr);
 	errors.Throw();
 	
-	GLFWimage icon;
+	if (iconName)
+	{
+		GLFWimage icon;
+		std::vector<unsigned char> data;
+		unsigned int w, h;
+		ReadImage(iconName, data, &w, &h);
+		icon.pixels = data.data();
+		icon.width = (int)w;
+		icon.height = (int)h;
+		glfwSetWindowIcon(pWindow, 1, &icon);
+		errors.Throw();
+	}
 
 }
 
