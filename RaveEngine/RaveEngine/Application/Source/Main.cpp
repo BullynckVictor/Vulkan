@@ -1,7 +1,8 @@
 #include <iostream>
+#include <fstream>
 
-#include "Engine/Include/GLFWManager.h"
-#include "Engine/Include/Window.h"
+#include "Engine/Include/RaveEngine.h"
+#include <unordered_map>
 
 class HelloTriangleApplication
 {
@@ -82,18 +83,20 @@ private:
     VkInstance instance = {};
 };
 
+void gameMain()
+{
+    rave::Window wnd = rave::Window("Rave Engine: Vulkan Edition", 800, 600, "Assets/icon.gif");
+
+    std::ofstream file("keys.txt");
+    unsigned char max = 0;
+
+    while (wnd.IsOpen())
+    {
+        rave::Window::HandleMessages();
+    }
+}
+
 int rave_main()
 {
-    try
-    {
-        rave::GLFWManager glfwMan;
-
-        rave::Window wnd = rave::Window("Rave Engine: Vulkan Edition", 800, 600, "Assets/icon.gif");
-
-        while (wnd.IsOpen())
-        {
-            rave::Window::HandleMessages();
-        }
-    }
-    rave_catch();
+    rave::Try<gameMain>();
 }

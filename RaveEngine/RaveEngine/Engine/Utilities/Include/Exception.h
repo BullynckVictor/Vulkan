@@ -96,17 +96,3 @@ namespace rave
 #	define rave_assert(expression)
 #	define rave_assert_info(expression, info)
 #endif
-
-#define rave_catch()																				\
-catch (rave::Exception& e)																		    \
-{																								    \
-	MessageBox(NULL, e.whide_what(), L"rave::Exception", MB_OK | MB_ICONEXCLAMATION);			    \
-}																								    \
-catch (std::exception& e)																		    \
-{																								    \
-	MessageBox(NULL, rave::Widen(e.what()).c_str(), L"std::exception", MB_OK | MB_ICONEXCLAMATION); \
-}																								    \
-catch (...)																						    \
-{																								    \
-	MessageBox(NULL, L"Unknown type caught", L"Unknown exception", MB_OK | MB_ICONEXCLAMATION);	    \
-}																								    

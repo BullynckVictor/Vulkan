@@ -11,4 +11,5 @@ namespace rave
 	typedef Vector<4, float> Vector4;
 
 	typedef Vector<2, unsigned int> Size;
+	typedef Vector<2, int> Point;
 }

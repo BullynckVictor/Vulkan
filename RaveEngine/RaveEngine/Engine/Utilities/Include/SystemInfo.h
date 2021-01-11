@@ -11,7 +11,7 @@ namespace rave
 
 #define RE_PLATFORM_WINDOWS
 
-				constexpr operator bool() noexcept
+				constexpr operator bool() const noexcept
 				{
 					return true;
 				}
@@ -21,7 +21,7 @@ namespace rave
 					static constexpr unsigned int bitlevel = 32u;
 #				endif
 #			else
-				constexpr operator bool() noexcept
+				constexpr operator bool() const noexcept
 				{
 					return false;
 				}
