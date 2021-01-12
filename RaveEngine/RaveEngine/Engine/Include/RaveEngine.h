@@ -3,7 +3,11 @@
 #include "Engine/Include/GLFWManager.h"
 #include "Engine/Include/Window.h"
 
+#include "Engine/Graphics/Include/Graphics.h"
+
 #include "Engine/Utilities/Include/Timer.h"
+
+#include <fstream>
 
 namespace rave
 {
@@ -21,10 +25,16 @@ namespace rave
 			catch (rave::Exception& e)
 			{
 				MessageBox(NULL, e.whide_what(), L"rave::Exception", MB_OK | MB_ICONEXCLAMATION);
+
+				std::ofstream f("errors.txt");
+				f << e.what();
 			}
 			catch (std::exception& e)
 			{
 				MessageBox(NULL, rave::Widen(e.what()).c_str(), L"std::exception", MB_OK | MB_ICONEXCLAMATION);
+
+				std::ofstream f("errors.txt");
+				f << e.what();
 			}
 			catch (...)
 			{

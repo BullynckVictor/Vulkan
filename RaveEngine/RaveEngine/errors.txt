@@ -1,0 +1,6 @@
+rave::InfoException occurred!
+
+File: C:\Users\victo\source\repos\Vulkan\RaveEngine\RaveEngine\Engine\Graphics\Source\Graphics.cpp
+Line: 31
+
+loader_get_json: Failed to open JSON file C:\Program Files\Rockstar Games\Social Club\SocialClubVulkanLayer.json

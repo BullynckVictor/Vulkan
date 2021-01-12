@@ -24,13 +24,13 @@ namespace rave
 		const std::string whatBuffer;
 	};
 
-	class HrException : public Exception
+	class VkException : public Exception
 	{
 	public:
-		HrException(const HRESULT hr, const char* file, const unsigned int line) noexcept;
+		VkException(const VkResult result, const char* file, const unsigned int line) noexcept;
 
 	private:
-		static std::wstring FormatHr(const HRESULT hr) noexcept;
+		static std::wstring FormatVkResult(const VkResult result) noexcept;
 	};
 
 	class FileException : public Exception
@@ -79,14 +79,42 @@ namespace rave
 
 	bool FileExists(const char* file) noexcept;
 	bool FileExists(const wchar_t* file) noexcept;
+
+	static constexpr bool Succeeded(const VkResult result) noexcept
+	{
+		constexpr bool strict = true;
+		if constexpr (!strict)
+		{
+			switch (result)
+			{
+			case VK_SUCCESS:
+			case VK_NOT_READY:
+			case VK_TIMEOUT:
+			case VK_EVENT_SET:
+			case VK_EVENT_RESET:
+			case VK_INCOMPLETE:
+			case VK_SUBOPTIMAL_KHR:
+			case VK_THREAD_IDLE_KHR:
+			case VK_THREAD_DONE_KHR:
+			case VK_OPERATION_DEFERRED_KHR:
+			case VK_OPERATION_NOT_DEFERRED_KHR:
+			case VK_PIPELINE_COMPILE_REQUIRED_EXT:
+				return true;
+			}
+			return false;
+		}
+		return result == VK_SUCCESS;
+	}
+
+	typedef VkResult VKR;
 }
 
-#define rave_throw_hr(hr) throw rave::HrException(hr, __FILE__, __LINE__)
+#define rave_throw_vk(vk) throw rave::VkException(vk, __FILE__, __LINE__)
 #define rave_throw_file(file) throw rave::FileException(file, __FILE__, __LINE__)
 #define rave_throw_message(info) throw rave::InfoException(info, __FILE__, __LINE__)
 #define rave_throw_last() throw rave::HrException((HRESULT)GetLastError(), __FILE__, __LINE__)
 
-#define rave_check_hr(hrCall) if(FAILED(hr = (hrCall))) throw rave::HrException(hr, __FILE__, __LINE__)
+#define rave_check_vk(vkCall) if(!Succeeded(vkr = (vkCall))) throw rave::VkException(vkr, __FILE__, __LINE__)
 #define rave_check_file(file) if(!rave::FileExists(file)) throw rave::FileException(file, __FILE__, __LINE__)
 
 #ifndef NDEBUG
