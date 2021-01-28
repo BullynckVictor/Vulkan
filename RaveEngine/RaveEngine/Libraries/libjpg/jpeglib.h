@@ -263,7 +263,7 @@ typedef enum {
   int global_state		/* For checking call sequence validity */
 
 /* Routines that are to be used by both halves of the library are declared
- * to receive a pointer to this structure.  There are no actual instances of
+ * to receive a pointer to this structure.  There are no actual sources of
  * jpeg_common_struct, only of jpeg_compress_struct and jpeg_decompress_struct.
  */
 struct jpeg_common_struct {
@@ -279,7 +279,7 @@ typedef struct jpeg_compress_struct * j_compress_ptr;
 typedef struct jpeg_decompress_struct * j_decompress_ptr;
 
 
-/* Master record for a compression instance */
+/* Master record for a compression source */
 
 struct jpeg_compress_struct {
   jpeg_common_fields;		/* Fields shared with jpeg_decompress_struct */
@@ -447,7 +447,7 @@ struct jpeg_compress_struct {
 };
 
 
-/* Master record for a decompression instance */
+/* Master record for a decompression source */
 
 struct jpeg_decompress_struct {
   jpeg_common_fields;		/* Fields shared with jpeg_compress_struct */

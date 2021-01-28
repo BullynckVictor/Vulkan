@@ -6,14 +6,18 @@
 #include "Engine/Include/Mouse.h"
 #include "Engine/Include/Keyboard.h"
 
+#include "Engine/Graphics/Include/Graphics.h"
+
 #include <map>
 
 namespace rave
 {
-	class Window
+
+
+	class Window : GraphicsFriend
 	{
 	public:
-		Window(const char* title, const unsigned int width, const unsigned int height, const char* icon = nullptr);
+		Window(const Graphics& gfx, const char* title, const unsigned int width, const unsigned int height, const char* icon = nullptr);
 		~Window() noexcept;
 
 		static void HandleMessages();
@@ -35,7 +39,10 @@ namespace rave
 
 	private:
 		Size size;
-		GLFWwindow* pWindow = nullptr;
+		GLFWwindow* window = nullptr;
+		VkQueue presentQueue = VK_NULL_HANDLE;
+
+		vk::SurfaceKHR surface;
 	};
 
 	struct WindowManager

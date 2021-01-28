@@ -205,12 +205,12 @@ void rave::GLFWErrorStream::Clear() noexcept
 	queue.clear();
 }
 
-rave::GLFWErrorStream* rave::GLFWErrorStream::GetStaticInstance() noexcept
+rave::GLFWErrorStream* rave::GLFWErrorStream::GetStaticsource() noexcept
 {
 	return &errors;
 }
 
 void rave::GLFWErrorStream::errorFunction(const int i, const char* str)
 {
-	GetStaticInstance()->Push(i, str);
+	GetStaticsource()->Push(i, str);
 }

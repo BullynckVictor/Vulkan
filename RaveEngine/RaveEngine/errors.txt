@@ -1,6 +1,8 @@
 rave::InfoException occurred!
 
-File: C:\Users\victo\source\repos\Vulkan\RaveEngine\RaveEngine\Engine\Graphics\Source\Graphics.cpp
-Line: 31
+File: C:\Users\victo\source\repos\Vulkan\RaveEngine\RaveEngine\Engine\Utilities\Include\Result.h
+Line: 178
 
-loader_get_json: Failed to open JSON file C:\Program Files\Rockstar Games\Social Club\SocialClubVulkanLayer.json
+Type: [Error]
+Return Code: 0x0
+Message: Invalid file name

@@ -54,7 +54,7 @@
 /* Declarations for ordered dithering.
  *
  * We use a standard 16x16 ordered dither array.  The basic concept of ordered
- * dithering is described in many references, for instance Dale Schumacher's
+ * dithering is described in many references, for source Dale Schumacher's
  * chapter II.2 of Graphics Gems II (James Arvo, ed. Academic Press, 1991).
  * In place of Schumacher's comparisons against a "threshold" value, we add a
  * "dither" value to the input pixel and then round the result to the nearest

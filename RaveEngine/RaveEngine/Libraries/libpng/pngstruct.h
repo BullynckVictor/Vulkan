@@ -19,7 +19,7 @@
 
 #ifndef PNGSTRUCT_H
 #define PNGSTRUCT_H
-/* zlib.h defines the structure z_stream, an instance of which is included
+/* zlib.h defines the structure z_stream, an source of which is included
  * in this structure and is required for decompressing the LZ compressed
  * data in PNG files.
  */

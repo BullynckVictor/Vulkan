@@ -9,26 +9,29 @@
 #include "Libraries/libpng/png.h"
 #include "Libraries/cgif/gifdec.h"
 
-#define rave_bail_png() rave_throw_message((std::wstring(L"Something went wrong while trying to read png file \"") + Widen(filename) + L"\"").c_str())
+#define rave_bail_png() return rave::Result((std::wstring(L"Something went wrong while trying to read png file \"") + Widen(filename) + L"\"").c_str(), RE_FAIL, RE_IMAGE_LOAD_FAIL)
+#define RETURN_ERROR(message) return rave::Result(message, RE_FAIL, RE_IMAGE_LOAD_FAIL)
+#define RETURN_FNF() return rave::Result((L"Unable to open file \"" + rave::Widen(std::string(filename)) + L"\"").c_str(), RE_FAIL, RE_FILE_NOT_FOUND)
 
-void rave::ReadImage(std::string_view filename, std::vector<Color>& data, unsigned int* pWidth, unsigned int* pHeight)
+rave::Result rave::ReadImage(std::string_view filename, std::vector<Color>& data, unsigned int* pWidth, unsigned int* pHeight)
 {
 	size_t dotpos = filename.rfind('.');
-	rave_assert_info(dotpos != filename.npos, L"Invalid file name");
+	if (dotpos == filename.npos)
+		return L"Invalid file name";
 	std::string_view formatstr = filename.substr(dotpos);
 
 	rave_check_file(filename.data());
 
 	switch (HashString(formatstr.data()))
 	{
-		case HashString(".png"):  ReadPNG(filename.data(), data, pWidth, pHeight);		break;
-		case HashString(".bmp"):  ReadBMP(filename.data(), data, pWidth, pHeight);		break;
+		case HashString(".png"):  return ReadPNG(filename.data(), data, pWidth, pHeight);
+		case HashString(".bmp"):  return ReadBMP(filename.data(), data, pWidth, pHeight);
 		case HashString(".jpg"):
 		case HashString(".jpe"):
-		case HashString(".jpeg"): ReadJPEG(filename.data(), data, pWidth, pHeight);		break;
-		case HashString(".gif"):  ReadGIF(filename.data(), data, 0, pWidth, pHeight);	break;
+		case HashString(".jpeg"): return ReadJPEG(filename.data(), data, pWidth, pHeight);
+		case HashString(".gif"):  return ReadGIF(filename.data(), data, 0, pWidth, pHeight);
 
-		default: rave_throw_message(L"File format not recognised");
+		default: return L"File format not recognised";
 	}
 }
 
@@ -104,11 +107,11 @@ struct ColorRGB
 	unsigned char r, g, b;
 };
 
-void rave::ReadGIF(const char* filename, std::vector<Color>& data, unsigned int frame, unsigned int* pWidth, unsigned int* pHeight)
+rave::Result rave::ReadGIF(const char* filename, std::vector<Color>& data, unsigned int frame, unsigned int* pWidth, unsigned int* pHeight)
 {
 	gd_GIF* pGif = gd_open_gif(filename);
 	if(!pGif)
-		rave_throw_message(L"Something went wrong");
+		RETURN_FNF();
 
 	std::vector<ColorRGB> intermediate((size_t)pGif->width * (size_t)pGif->height);
 
@@ -133,9 +136,11 @@ void rave::ReadGIF(const char* filename, std::vector<Color>& data, unsigned int 
 		*pHeight = pGif->height;
 
 	gd_close_gif(pGif);
+
+	return RE_SUCCESS;
 }
 
-void rave::ReadBMP(const char* filename, std::vector<Color>& data, unsigned int* pWidth, unsigned int* pHeight)
+rave::Result rave::ReadBMP(const char* filename, std::vector<Color>& data, unsigned int* pWidth, unsigned int* pHeight)
 {
     std::ifstream inp{ filename, std::ios_base::binary };
     if (inp) 
@@ -147,7 +152,7 @@ void rave::ReadBMP(const char* filename, std::vector<Color>& data, unsigned int*
         inp.read((char*)&file_header, sizeof(file_header));
         if (file_header.file_type != 0x4D42) 
         {
-            rave_throw_message(L"Error! Unrecognized file format.");
+            RETURN_ERROR(L"Unrecognized file format");
         }
         inp.read((char*)&bmp_info_header, sizeof(bmp_info_header));
 
@@ -163,7 +168,7 @@ void rave::ReadBMP(const char* filename, std::vector<Color>& data, unsigned int*
             }
             else 
             {
-                rave_throw_message(L"Error! Unrecognized file format.");
+				RETURN_ERROR(L"Unrecognized file format");
             }
         }
 
@@ -186,7 +191,7 @@ void rave::ReadBMP(const char* filename, std::vector<Color>& data, unsigned int*
 
         if (bmp_info_header.height < 0) 
         {
-            rave_throw_message(L"The program can treat only BMP images with the origin in the bottom left corner!");
+			RETURN_ERROR(L"The program can treat only BMP images with the origin in the bottom left corner!");
         }
 
         data.resize((size_t)bmp_info_header.width * (size_t)bmp_info_header.height);
@@ -261,20 +266,21 @@ void rave::ReadBMP(const char* filename, std::vector<Color>& data, unsigned int*
 			*pWidth = (unsigned int)bmp_info_header.width;
 		if (pHeight)
 			*pHeight = (unsigned int)bmp_info_header.height;
+
+		return RE_SUCCESS;
     }
     else
     {
-        rave_throw_message(L"Unable to open the input image file.");
+        RETURN_FNF();
     }
 }
 
-void rave::ReadPNG(const char* filename, std::vector<Color>& data, unsigned int* pWidth, unsigned int* pHeight)
-
+rave::Result rave::ReadPNG(const char* filename, std::vector<Color>& data, unsigned int* pWidth, unsigned int* pHeight)
 {
 	FILE* fp = fopen(filename, "rb");
 
 	png_structp png = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
-	if (!png) rave_bail_png();
+	if (!png) RETURN_FNF();
 
 	png_infop info = png_create_info_struct(png);
 	if (!info) { png_destroy_read_struct(&png, NULL, NULL); rave_bail_png(); }
@@ -333,16 +339,18 @@ void rave::ReadPNG(const char* filename, std::vector<Color>& data, unsigned int*
 		*pWidth = width;
 	if (pHeight)
 		*pHeight = height;
+
+	return RE_SUCCESS;
 }
 
-void rave::ReadJPEG(const char* filename, std::vector<Color>& data, unsigned int* pWidth, unsigned int* pHeight)
+rave::Result rave::ReadJPEG(const char* filename, std::vector<Color>& data, unsigned int* pWidth, unsigned int* pHeight)
 {
 	jpeg_decompress_struct cinfo;
 	JpegErrorManager errorManager;
 
 	FILE* pFile = fopen(filename, "rb");
 	if (!pFile)
-		rave_throw_message(L"Something went wrong");
+		RETURN_FNF();
 
 	// set our custom error handler
 	cinfo.err = jpeg_std_error(&errorManager.defaultErrorManager);
@@ -353,7 +361,7 @@ void rave::ReadJPEG(const char* filename, std::vector<Color>& data, unsigned int
 		// We jump here on errors
 		jpeg_destroy_decompress(&cinfo);
 		fclose(pFile);
-		return;
+		return RE_SUCCESS;
 	}
 
 	jpeg_create_decompress(&cinfo);
@@ -405,6 +413,8 @@ void rave::ReadJPEG(const char* filename, std::vector<Color>& data, unsigned int
 		*pWidth = width;
 	if (pHeight)
 		*pHeight = height;
+
+	return RE_SUCCESS;
 }
 
 void rave::JpegErrorExit(j_common_ptr cinfo)

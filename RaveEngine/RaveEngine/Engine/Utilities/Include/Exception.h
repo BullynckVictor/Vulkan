@@ -68,7 +68,7 @@ namespace rave
 		void Throw();
 		bool IsEmpty() const noexcept;
 		void Clear() noexcept;
-		static GLFWErrorStream* GetStaticInstance() noexcept;
+		static GLFWErrorStream* GetStaticsource() noexcept;
 
 	private:
 		static void errorFunction(const int i, const char* str);
@@ -114,7 +114,7 @@ namespace rave
 #define rave_throw_message(info) throw rave::InfoException(info, __FILE__, __LINE__)
 #define rave_throw_last() throw rave::HrException((HRESULT)GetLastError(), __FILE__, __LINE__)
 
-#define rave_check_vk(vkCall) if(!Succeeded(vkr = (vkCall))) throw rave::VkException(vkr, __FILE__, __LINE__)
+#define rave_check_vkr(vkCall) if(!Succeeded(vkr = (vkCall))) throw rave::VkException(vkr, __FILE__, __LINE__)
 #define rave_check_file(file) if(!rave::FileExists(file)) throw rave::FileException(file, __FILE__, __LINE__)
 
 #ifndef NDEBUG

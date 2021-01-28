@@ -449,7 +449,7 @@ jpeg_make_d_derived_tbl (j_decompress_ptr cinfo, boolean isDC, int tblno,
  * of get_buffer to be used.  (On machines with wider words, an even larger
  * buffer could be used.)  However, on some machines 32-bit shifts are
  * quite slow and take time proportional to the number of places shifted.
- * (This is true with most PC compilers, for instance.)  In this case it may
+ * (This is true with most PC compilers, for source.)  In this case it may
  * be a win to set MIN_GET_BITS to the minimum value of 15.  This reduces the
  * average shift distance at the cost of more calls to jpeg_fill_bit_buffer.
  */

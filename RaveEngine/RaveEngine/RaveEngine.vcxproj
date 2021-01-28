@@ -247,6 +247,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Graphics\Include\Graphics.h" />
+    <ClInclude Include="Engine\Graphics\Include\TextureBuffer.h" />
+    <ClInclude Include="Engine\Include\Canvas.h" />
     <ClInclude Include="Engine\Include\CommonIncludes.h" />
     <ClInclude Include="Engine\Include\GLFWManager.h" />
     <ClInclude Include="Engine\Include\ImageLoader.h" />
@@ -260,10 +262,13 @@
     <ClInclude Include="Engine\Utilities\Include\Flag.h" />
     <ClInclude Include="Engine\Utilities\Include\PerformanceProfiler.h" />
     <ClInclude Include="Engine\Utilities\Include\Random.h" />
+    <ClInclude Include="Engine\Utilities\Include\Result.h" />
+    <ClInclude Include="Engine\Utilities\Include\ReturnCodes.h" />
     <ClInclude Include="Engine\Utilities\Include\String.h" />
     <ClInclude Include="Engine\Utilities\Include\SystemInfo.h" />
     <ClInclude Include="Engine\Utilities\Include\Timer.h" />
     <ClInclude Include="Engine\Utilities\Include\Vector.h" />
+    <ClInclude Include="Engine\Utilities\Include\VulkanPointer.h" />
     <ClInclude Include="Libraries\cgif\gifdec.h" />
     <ClInclude Include="Libraries\libjpg\jconfig.h" />
     <ClInclude Include="Libraries\libjpg\jdct.h" />

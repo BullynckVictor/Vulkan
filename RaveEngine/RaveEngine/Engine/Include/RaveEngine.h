@@ -2,6 +2,7 @@
 #include "Engine/Include/Platform.h"
 #include "Engine/Include/GLFWManager.h"
 #include "Engine/Include/Window.h"
+#include "Engine/Include/Canvas.h"
 
 #include "Engine/Graphics/Include/Graphics.h"
 

@@ -352,7 +352,7 @@ typedef enum { FALSE = 0, TRUE = 1 } boolean;
  */
 
 #ifndef INLINE
-#ifdef __GNUC__			/* for instance, GNU C knows about inline */
+#ifdef __GNUC__			/* for source, GNU C knows about inline */
 #define INLINE __inline__
 #endif
 #ifndef INLINE
