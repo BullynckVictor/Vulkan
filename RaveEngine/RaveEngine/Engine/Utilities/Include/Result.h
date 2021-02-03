@@ -21,85 +21,6 @@ namespace rave
 		}
 	}
 
-	template<typename T>
-	class OptionalResult
-	{
-	public:
-		OptionalResult()
-			:
-			value({}),
-			info(nullptr)
-		{
-		}
-		OptionalResult(const T& value)
-			:
-			value(value),
-			info(nullptr)
-		{}
-		OptionalResult(T&& value)
-			:
-			value(std::forward(value)),
-			info(nullptr)
-		{}
-		OptionalResult(const OptionalResult& rhs)
-			:
-			value(rhs.value),
-			info(nullptr)
-		{
-			CopyWString(&info, rhs);
-		}
-
-		OptionalResult& operator= (const OptionalResult& rhs)
-		{
-			value = rhs.value;
-			CopyWString(&info, rhs);
-		}
-		T& Expects(const wchar_t* message)
-		{
-			if (Failed())
-				rave_throw_message(message);
-			return value;
-		}
-		const T& Expects(const wchar_t* message) const
-		{
-			if (Failed())
-				rave_throw_message(message);
-			return value;
-		}
-		T& Get() noexcept
-		{
-			return value;
-		}
-		const T& Get() const noexcept
-		{
-			return value;
-		}
-
-		bool Succeeded() const noexcept
-		{
-			return info;
-		}
-		bool Failed() const noexcept
-		{
-			return !info;
-		}
-
-		const wchar_t* GetErrorMessage() const noexcept
-		{
-			return info;
-		}
-
-		~OptionalResult()
-		{
-			if (info)
-				delete[] info;
-		}
-
-	private:
-		T value;
-		wchar_t* info;
-	};
-
 	class Result
 	{
 	public:
@@ -192,5 +113,73 @@ namespace rave
 
 		wchar_t* info;
 		uint32_t flags;
+	};
+
+	template<typename T>
+	class OptionalResult
+	{
+	public:
+		OptionalResult()
+			:
+			value({}),
+			result({})
+		{
+		}
+		OptionalResult(const T& value)
+			:
+			value(value),
+			result()
+		{}
+		OptionalResult(T&& value)
+			:
+			value(std::move(value)),
+			result()
+		{}
+		OptionalResult(const OptionalResult& rhs)
+			:
+			value(rhs.value),
+			result(rhs.result)
+		{
+		}
+		OptionalResult(const Result& result)
+			:
+			value(),
+			result(result)
+		{
+		}
+
+		OptionalResult& operator= (const OptionalResult& rhs)
+		{
+			value = rhs.value;
+			result = rhs.result;
+		}
+		T& GetAndCheck()
+		{
+			result.Throw();
+			return value;
+		}
+		const T& GetAndCheck() const
+		{
+			result.Throw();
+			return value;
+		}
+		T& Get() noexcept
+		{
+			return value;
+		}
+		const T& Get() const noexcept
+		{
+			return value;
+		}
+
+
+		const Result& GetResult() const noexcept
+		{
+			return result;
+		}
+
+	private:
+		T value;
+		Result result;
 	};
 }

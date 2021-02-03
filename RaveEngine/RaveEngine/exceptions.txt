@@ -1,0 +1,26 @@
+<************************************>
+
+rave::VkException occurred!
+
+File: C:\Users\victo\source\repos\Vulkan\RaveEngine\RaveEngine\Engine\Graphics\Source\Instance.cpp
+Line: 95
+
+VkResult: 0xfffffff9
+Description:
+A requested extension is not supported
+
+Stack Trace:
+C:\Users\victo\source\repos\Vulkan\RaveEngine\RaveEngine\Engine\Utilities\Source\Exception.cpp (20): rave::Exception::Exception
+C:\Users\victo\source\repos\Vulkan\RaveEngine\RaveEngine\Engine\Utilities\Source\Exception.cpp (59): rave::VkException::VkException
+C:\Users\victo\source\repos\Vulkan\RaveEngine\RaveEngine\Engine\Graphics\Source\Instance.cpp (95): rave::VulkanInstance::VulkanInstance
+C:\Users\victo\source\repos\Vulkan\RaveEngine\RaveEngine\Engine\Graphics\Source\Graphics.cpp (160): rave::Graphics::Graphics
+C:\Users\victo\source\repos\Vulkan\RaveEngine\RaveEngine\Application\Source\Main.cpp (9): gameMain
+C:\Users\victo\source\repos\Vulkan\RaveEngine\RaveEngine\Engine\Include\RaveEngine.h (24): rave::Try<&gameMain>
+C:\Users\victo\source\repos\Vulkan\RaveEngine\RaveEngine\Application\Source\Main.cpp (21): wWinMain
+d:\agent\_work\63\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl (123): invoke_main
+d:\agent\_work\63\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl (288): __scrt_common_main_seh
+d:\agent\_work\63\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl (331): __scrt_common_main
+d:\agent\_work\63\s\src\vctools\crt\vcstartup\src\startup\exe_wwinmain.cpp (17): wWinMainCRTStartup
+
+
+<************************************>

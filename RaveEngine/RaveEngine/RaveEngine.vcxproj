@@ -159,6 +159,8 @@
   <ItemGroup>
     <ClCompile Include="Application\Source\Main.cpp" />
     <ClCompile Include="Engine\Graphics\Source\Graphics.cpp" />
+    <ClCompile Include="Engine\Graphics\Source\Image.cpp" />
+    <ClCompile Include="Engine\Graphics\Source\Instance.cpp" />
     <ClCompile Include="Engine\Source\Keyboard.cpp" />
     <ClCompile Include="Engine\Source\Mouse.cpp" />
     <ClCompile Include="Engine\Source\GLFWManager.cpp" />
@@ -229,6 +231,9 @@
     <ClCompile Include="Libraries\libpng\pngwrite.c" />
     <ClCompile Include="Libraries\libpng\pngwtran.c" />
     <ClCompile Include="Libraries\libpng\pngwutil.c" />
+    <ClCompile Include="Libraries\stacktrace\call_stack_gcc.cpp" />
+    <ClCompile Include="Libraries\stacktrace\call_stack_msvc.cpp" />
+    <ClCompile Include="Libraries\stacktrace\StackWalker.cpp" />
     <ClCompile Include="Libraries\zlib\adler32.c" />
     <ClCompile Include="Libraries\zlib\compress.c" />
     <ClCompile Include="Libraries\zlib\crc32.c" />
@@ -247,9 +252,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Graphics\Include\Graphics.h" />
+    <ClInclude Include="Engine\Graphics\Include\Image.h" />
+    <ClInclude Include="Engine\Graphics\Include\Instance.h" />
     <ClInclude Include="Engine\Graphics\Include\TextureBuffer.h" />
+    <ClInclude Include="Engine\Graphics\Include\VulkanFunctions.h" />
     <ClInclude Include="Engine\Include\Canvas.h" />
     <ClInclude Include="Engine\Include\CommonIncludes.h" />
+    <ClInclude Include="Engine\Include\CompileTimeSettings.h" />
     <ClInclude Include="Engine\Include\GLFWManager.h" />
     <ClInclude Include="Engine\Include\ImageLoader.h" />
     <ClInclude Include="Engine\Include\Keyboard.h" />
@@ -262,6 +271,7 @@
     <ClInclude Include="Engine\Utilities\Include\Flag.h" />
     <ClInclude Include="Engine\Utilities\Include\PerformanceProfiler.h" />
     <ClInclude Include="Engine\Utilities\Include\Random.h" />
+    <ClInclude Include="Engine\Utilities\Include\RandomAccessIterator.h" />
     <ClInclude Include="Engine\Utilities\Include\Result.h" />
     <ClInclude Include="Engine\Utilities\Include\ReturnCodes.h" />
     <ClInclude Include="Engine\Utilities\Include\String.h" />
@@ -287,6 +297,9 @@
     <ClInclude Include="Libraries\libpng\pngpriv.h" />
     <ClInclude Include="Libraries\libpng\pngstruct.h" />
     <ClInclude Include="Libraries\libpng\zlib.h" />
+    <ClInclude Include="Libraries\stacktrace\call_stack.hpp" />
+    <ClInclude Include="Libraries\stacktrace\StackWalker.h" />
+    <ClInclude Include="Libraries\stacktrace\stack_exception.hpp" />
     <ClInclude Include="Libraries\zlib\crc32.h" />
     <ClInclude Include="Libraries\zlib\deflate.h" />
     <ClInclude Include="Libraries\zlib\gzguts.h" />
@@ -298,6 +311,9 @@
     <ClInclude Include="Libraries\zlib\zconf.h" />
     <ClInclude Include="Libraries\zlib\zlib.h" />
     <ClInclude Include="Libraries\zlib\zutil.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="exceptions.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

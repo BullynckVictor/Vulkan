@@ -1,5 +1,6 @@
 #include "Engine/Utilities/Include/Exception.h"
 #include <fstream>
+#include <iostream>
 
 rave::GLFWErrorStream rave::errors;
 
@@ -8,6 +9,7 @@ rave::Exception::Exception(const std::string& what_) noexcept
 	whatBuffer(what_),
 	wideWhatBuffer(Widen(what_))
 {
+	DumpFile();
 }
 
 rave::Exception::Exception(const std::wstring& what_) noexcept
@@ -15,6 +17,7 @@ rave::Exception::Exception(const std::wstring& what_) noexcept
 	whatBuffer(Narrow(what_)),
 	wideWhatBuffer(what_)
 {
+	DumpFile();
 }
 
 const char* rave::Exception::what() const noexcept
@@ -38,9 +41,22 @@ std::wstring rave::Exception::Format(const wchar_t* type, const char* file, cons
 	return wss.str();
 }
 
+void rave::Exception::DumpFile() const
+{
+	std::wstringstream wss;
+	wss << L"<************************************>\n\n" << wideWhatBuffer << "\n\nStack Trace:\n" << Widen(callstack.to_string()) << L"\n\n<************************************>\n";
+
+	std::wofstream file("exceptions.txt");
+	auto str = wss.str();
+	file << str;
+
+	if constexpr(System::windows)
+		OutputDebugString(wss.str().c_str());
+}
+
 rave::VkException::VkException(const VkResult result, const char* file, const unsigned int line) noexcept
 	:
-	Exception(Format(L"rave::VkException", file, line) + FormatVkResult(result))
+	Exception(Format(L"rave::VkException", file, line).append(FormatVkResult(result)))
 {
 }
 
@@ -90,7 +106,7 @@ static constexpr const wchar_t* StringFromVkResult(const VkResult result)
 std::wstring rave::VkException::FormatVkResult(const VkResult result) noexcept
 {
 	std::wstringstream wss;
-	wss << L"VkResult: " << std::hex << result << L"\n"
+	wss << L"VkResult: 0x" << std::hex << result << L"\n"
 		<< L"Description:\n"
 		<< StringFromVkResult(result);
 
@@ -174,7 +190,7 @@ void rave::GLFWErrorStream::Push(const int code, const char* message)
 {
 	std::stringstream ss;
 	ss << "GLFWError occurred!\n\n";
-	ss << "Error code: " << std::hex << code << "\n";
+	ss << "Error code: 0x" << std::hex << code << "\n";
 	ss << "Description:\n";
 	ss << message;
 

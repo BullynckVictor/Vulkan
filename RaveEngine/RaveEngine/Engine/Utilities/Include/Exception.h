@@ -4,6 +4,7 @@
 #include <deque>
 #include "Engine/Utilities/Include/String.h"
 #include "Engine/Include/CommonIncludes.h"
+#include "Libraries/stacktrace/call_stack.hpp"
 
 namespace rave
 {
@@ -20,8 +21,11 @@ namespace rave
 		static std::wstring Format(const wchar_t* type, const char* file, const unsigned int line) noexcept;
 
 	private:
+		void DumpFile() const;
+
 		const std::wstring wideWhatBuffer;
 		const std::string whatBuffer;
+		const stacktrace::call_stack callstack;
 	};
 
 	class VkException : public Exception

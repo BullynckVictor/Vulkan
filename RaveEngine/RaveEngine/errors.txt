@@ -1,8 +1,8 @@
-rave::InfoException occurred!
+rave::VkException occurred!
 
-File: C:\Users\victo\source\repos\Vulkan\RaveEngine\RaveEngine\Engine\Utilities\Include\Result.h
-Line: 178
+File: C:\Users\victo\source\repos\Vulkan\RaveEngine\RaveEngine\Engine\Graphics\Source\Instance.cpp
+Line: 95
 
-Type: [Error]
-Return Code: 0x0
-Message: Invalid file name
+VkResult: 0xfffffff9
+Description:
+A requested extension is not supported
