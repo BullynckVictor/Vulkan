@@ -4,6 +4,8 @@
 #include "Engine/Include/RaveEngine.h"
 #include <unordered_map>
 
+#include "Application/Include/VulkanApp.h"
+
 void gameMain()
 {
     rave::Graphics gfx;
@@ -15,7 +17,12 @@ void gameMain()
     }
 }
 
+void vulkanMain()
+{
+	vka::HelloTriangleApplication{}.run();
+}
+
 int rave_main()
 {
-    rave::Try<gameMain>();
+    rave::Try<vulkanMain>();
 }

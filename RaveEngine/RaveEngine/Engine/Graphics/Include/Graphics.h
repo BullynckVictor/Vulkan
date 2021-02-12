@@ -2,6 +2,7 @@
 #include "Engine/Include/CommonIncludes.h"
 #include "Engine/Utilities/Include/VulkanPointer.h"
 #include "Engine/Graphics/Include/Instance.h"
+#include "Engine/Graphics/Include/Device.h"
 
 namespace rave
 {
@@ -17,11 +18,13 @@ namespace rave
 		void ValidateDevice(const VkSurfaceKHR surface) const;
 
 	private:
-		VkDevice device = VK_NULL_HANDLE;
-		VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
 		VkQueue graphicsQueue = VK_NULL_HANDLE;
 
-		VulkanInstance instance;
+		VulkanInstance	instance;
+//		Device			device;
+
+		VkDevice device = VK_NULL_HANDLE;
+		VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
 
 		void pickPhysicalDevice();
 		void createLogicalDevice();

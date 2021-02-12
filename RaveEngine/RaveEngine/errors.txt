@@ -1,8 +1,1 @@
-rave::VkException occurred!
-
-File: C:\Users\victo\source\repos\Vulkan\RaveEngine\RaveEngine\Engine\Graphics\Source\Instance.cpp
-Line: 95
-
-VkResult: 0xfffffff9
-Description:
-A requested extension is not supported
+failed to open file!

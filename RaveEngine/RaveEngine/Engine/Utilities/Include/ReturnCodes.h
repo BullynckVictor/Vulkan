@@ -14,6 +14,7 @@ namespace rave
 	{
 		RE_NULL = 0,
 		RE_FILE_NOT_FOUND,
-		RE_IMAGE_LOAD_FAIL
+		RE_IMAGE_LOAD_FAIL,
+		RE_DEVICE_PICK_FAIL
 	};
 }

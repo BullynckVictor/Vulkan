@@ -251,9 +251,12 @@
     <ClCompile Include="Libraries\zlib\zutil.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Application\Include\VulkanApp.h" />
+    <ClInclude Include="Engine\Graphics\Include\Device.h" />
     <ClInclude Include="Engine\Graphics\Include\Graphics.h" />
     <ClInclude Include="Engine\Graphics\Include\Image.h" />
     <ClInclude Include="Engine\Graphics\Include\Instance.h" />
+    <ClInclude Include="Engine\Graphics\Include\QueueFamily.h" />
     <ClInclude Include="Engine\Graphics\Include\TextureBuffer.h" />
     <ClInclude Include="Engine\Graphics\Include\VulkanFunctions.h" />
     <ClInclude Include="Engine\Include\Canvas.h" />
@@ -266,6 +269,7 @@
     <ClInclude Include="Engine\Include\Platform.h" />
     <ClInclude Include="Engine\Include\RaveEngine.h" />
     <ClInclude Include="Engine\Include\Window.h" />
+    <ClInclude Include="Engine\Utilities\Include\ArrayView.h" />
     <ClInclude Include="Engine\Utilities\Include\Color.h" />
     <ClInclude Include="Engine\Utilities\Include\Exception.h" />
     <ClInclude Include="Engine\Utilities\Include\Flag.h" />

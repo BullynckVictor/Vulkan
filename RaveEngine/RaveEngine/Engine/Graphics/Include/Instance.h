@@ -1,6 +1,6 @@
 #pragma once
 #include "Engine/Include/CommonIncludes.h"
-#include "Engine//Utilities/Include/VulkanPointer.h"
+#include "Engine/Utilities/Include/VulkanPointer.h"
 
 namespace rave
 {
